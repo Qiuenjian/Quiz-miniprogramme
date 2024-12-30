@@ -1,0 +1,72 @@
+<!--pages/battle/battle.wxml-->
+<view class="battle-container">
+  <!-- 对战模式选择 -->
+  <view class="mode-selector">
+    <view 
+      class="mode-item {{battleMode === 'random' ? 'active' : ''}}" 
+      bindtap="switchMode" 
+      data-mode="random"
+    >
+      随机匹配
+    </view>
+    <view 
+      class="mode-item {{battleMode === 'friend' ? 'active' : ''}}" 
+      bindtap="switchMode" 
+      data-mode="friend"
+    >
+      好友对战
+    </view>
+  </view>
+
+  <!-- 随机匹配模式 -->
+  <view class="random-battle" wx:if="{{battleMode === 'random'}}">
+    <view class="matching-area">
+      <view class="user-avatar">
+        <image src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      </view>
+      
+      <view class="matching-status" wx:if="{{isMatching}}">
+        <view class="matching-text">正在匹配对手...</view>
+        <view class="countdown">{{matchCountdown}}s</view>
+        <button class="cancel-btn" bindtap="cancelMatching">取消匹配</button>
+      </view>
+      
+      <button 
+        class="start-btn" 
+        bindtap="startMatching" 
+        wx:if="{{!isMatching}}"
+      >
+        开始匹配
+      </button>
+    </view>
+  </view>
+
+  <!-- 好友对战模式 -->
+  <view class="friend-battle" wx:if="{{battleMode === 'friend'}}">
+    <view class="online-users">
+      <view class="section-title">在线用户</view>
+      <view class="user-list">
+        <view 
+          class="user-item" 
+          wx:for="{{onlineUsers}}" 
+          wx:key="_id"
+        >
+          <view class="user-info">
+            <image class="user-avatar" src="{{item.avatarUrl}}" mode="aspectFill"></image>
+            <view class="user-detail">
+              <text class="user-name">{{item.name}}</text>
+              <text class="user-department">{{item.department}}</text>
+            </view>
+          </view>
+          <button 
+            class="invite-btn" 
+            bindtap="inviteUser" 
+            data-user-id="{{item._id}}"
+          >
+            邀请对战
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

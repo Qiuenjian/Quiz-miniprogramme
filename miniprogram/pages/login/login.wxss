@@ -1,0 +1,54 @@
+.login-container {
+  padding: 60rpx 40rpx;
+  height: 100vh;
+  background-color: #f8f8f8;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 80rpx;
+}
+
+.logo image {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.form {
+  background: #fff;
+  padding: 40rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+  margin-bottom: 40rpx;
+}
+
+.input-group input {
+  width: 100%;
+  height: 88rpx;
+  border-bottom: 2rpx solid #e5e5e5;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+}
+
+.login-btn {
+  background: #3366FF;
+  color: #fff;
+  border-radius: 44rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  margin-top: 60rpx;
+}
+
+.login-btn:active {
+  opacity: 0.8;
+}
+
+.logo-text {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #3366FF;
+} 

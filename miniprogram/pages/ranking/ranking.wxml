@@ -1,0 +1,62 @@
+<!--pages/ranking/ranking.wxml-->
+<view class="container">
+  <view class="ranking-card">
+    <!-- 顶部导航栏 -->
+    <view class="header">
+      <view class="back-btn" bindtap="navigateBack">
+        <text class="iconfont icon-arrow-left"></text>
+      </view>
+      <text class="header-title">排行榜</text>
+    </view>
+
+    <!-- 分类导航 -->
+    <view class="nav-tabs">
+      <view class="tab-item {{currentTab === 'personal' ? 'active' : ''}}" 
+            bindtap="switchTab" 
+            data-tab="personal">
+        个人排名
+      </view>
+      <view class="tab-item {{currentTab === 'department' ? 'active' : ''}}" 
+            bindtap="switchTab" 
+            data-tab="department">
+        部门排名
+      </view>
+      <view class="tab-item {{currentTab === 'office' ? 'active' : ''}}" 
+            bindtap="switchTab" 
+            data-tab="office">
+        科室排名
+      </view>
+    </view>
+
+    <!-- 排行榜列表 -->
+    <scroll-view 
+      class="rank-list" 
+      scroll-y 
+      enable-flex
+      refresher-enabled="{{true}}"
+      refresher-triggered="{{isRefreshing}}"
+      bindrefresherrefresh="onRefresh"
+      bindscrolltolower="onLoadMore">
+      <view class="rank-item" wx:for="{{rankList}}" wx:key="index">
+        <text class="rank-number {{index < 3 ? 'top-rank' : ''}}">{{index + 1}}</text>
+        <image class="avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+        <text class="name">{{item.name}}</text>
+        <text class="score">{{item.score}}</text>
+      </view>
+      <!-- 加载更多提示 -->
+      <view class="loading-more" wx:if="{{hasMore}}">
+        <text>加载中...</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 底部我的排名 -->
+  <view class="my-rank-wrapper">
+    <view class="my-rank">
+      <text class="rank-number">128</text>
+      <image class="avatar" src="{{userInfo.avatar}}" mode="aspectFill"></image>
+      <text class="name">我的排名</text>
+      <text class="score">45</text>
+    </view>
+  </view>
+</view>

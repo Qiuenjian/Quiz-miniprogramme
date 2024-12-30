@@ -1,0 +1,14 @@
+<view class="login-container">
+  <view class="logo">
+    <text class="logo-text">中国移动知识问答竞赛</text>
+  </view>
+  <view class="form">
+    <view class="input-group">
+      <input type="text" placeholder="请输入工号" bindinput="onInput" data-field="employeeId" />
+    </view>
+    <view class="input-group">
+      <input type="password" placeholder="请输入密码" bindinput="onInput" data-field="password" />
+    </view>
+    <button class="login-btn" bindtap="login">登录</button>
+  </view>
+</view> 

@@ -1,0 +1,111 @@
+<!--pages/admin/quiz-manage/quiz-manage.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">题库管理</text>
+    <button class="add-btn" bindtap="showAddForm">添加题目</button>
+  </view>
+
+  <view class="quiz-list">
+    <view class="quiz-item" wx:for="{{quizList}}" wx:key="_id">
+      <view class="quiz-content">
+        <view class="quiz-title">{{item.title}}</view>
+        <view class="quiz-info">
+          <text class="category">{{item.category}}</text>
+          <text class="score">{{item.score}}分</text>
+          <text class="difficulty">{{item.difficulty}}</text>
+        </view>
+      </view>
+      <view class="quiz-actions">
+        <button class="edit-btn" bindtap="editQuiz" data-quiz="{{item}}">编辑</button>
+        <button class="delete-btn" bindtap="deleteQuiz" data-id="{{item._id}}">删除</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="form-modal" wx:if="{{showQuizForm}}">
+    <view class="form-content">
+      <view class="form-title">{{currentQuiz ? '编辑题目' : '添加题目'}}</view>
+      
+      <view class="form-item">
+        <text class="label">题目</text>
+        <input 
+          class="input" 
+          value="{{formData.title}}" 
+          bindinput="onInputChange" 
+          data-field="title" 
+          placeholder="请输入题目"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">选项</text>
+        <view class="options-list">
+          <view class="option-item" wx:for="{{formData.options}}" wx:key="index">
+            <input 
+              class="option-input" 
+              value="{{item}}" 
+              bindinput="onOptionChange" 
+              data-index="{{index}}" 
+              placeholder="选项{{index + 1}}"
+            />
+          </view>
+        </view>
+      </view>
+
+      <view class="form-item">
+        <text class="label">正确答案</text>
+        <input 
+          class="input" 
+          value="{{formData.correctAnswer}}" 
+          bindinput="onInputChange" 
+          data-field="correctAnswer" 
+          placeholder="请输入正确答案"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">分值</text>
+        <input 
+          class="input" 
+          type="number" 
+          value="{{formData.score}}" 
+          bindinput="onInputChange" 
+          data-field="score" 
+          placeholder="请输入分值"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">分类</text>
+        <input 
+          class="input" 
+          value="{{formData.category}}" 
+          bindinput="onInputChange" 
+          data-field="category" 
+          placeholder="请输入分类"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">难度</text>
+        <picker 
+          mode="selector" 
+          range="{{['简单', '普通', '困难']}}" 
+          value="{{['easy', 'normal', 'hard'].indexOf(formData.difficulty)}}" 
+          bindchange="onInputChange" 
+          data-field="difficulty"
+        >
+          <view class="picker">
+            {{formData.difficulty === 'easy' ? '简单' : 
+              formData.difficulty === 'hard' ? '困难' : '普通'}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-actions">
+        <button class="cancel-btn" bindtap="hideForm">取消</button>
+        <button class="submit-btn" bindtap="submitQuiz">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

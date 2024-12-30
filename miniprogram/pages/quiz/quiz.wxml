@@ -1,0 +1,41 @@
+<view class="container">
+  <view wx:if="{{loading}}" class="loading">
+    <text>加载中...</text>
+  </view>
+
+  <view wx:elif="{{error}}" class="error">
+    <text>{{error}}</text>
+    <button bindtap="retry" class="retry-btn">重试</button>
+  </view>
+
+  <view wx:elif="{{quizzes.length === 0}}" class="empty">
+    <text>暂无可答题目</text>
+  </view>
+
+  <view wx:else class="quiz-content">
+    <view class="quiz-info">
+      <text class="quiz-count">第 {{currentIndex + 1}}/{{quizzes.length}} 题</text>
+      <text class="quiz-score">{{quizzes[currentIndex].score}}分</text>
+    </view>
+
+    <view class="quiz-title">{{quizzes[currentIndex].title}}</view>
+
+    <view class="options-list">
+      <view class="option-item {{selectedAnswer === item ? 'selected' : ''}}" 
+        wx:for="{{quizzes[currentIndex].options}}" 
+        wx:key="index"
+        bindtap="selectOption"
+        data-option="{{item}}">
+        {{item}}
+      </view>
+    </view>
+
+    <view class="footer">
+      <button class="next-btn" 
+        disabled="{{!selectedAnswer}}"
+        bindtap="nextQuestion">
+        {{currentIndex === quizzes.length - 1 ? '提交' : '下一题'}}
+      </button>
+    </view>
+  </view>
+</view> 

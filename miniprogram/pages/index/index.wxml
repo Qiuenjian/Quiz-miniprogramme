@@ -1,0 +1,67 @@
+<view class="container">
+  <!-- 顶部标题栏 -->
+  <view class="header">
+    <image class="logo" src="/images/logo.jpg" mode="heightFit"/>
+    <text class="title">中国移动知识问答竞赛</text>
+    <view class="placeholder"></view>
+  </view>
+
+  <view class="content-container">
+    <!-- Banner图片 -->
+    <view class="banner-section">
+      <image class="banner-image" src="/images/banner.jpg" mode="aspectFill"/>
+    </view>
+
+    <!-- 进行中的竞赛 -->
+    <view class="competition-section">
+      <text class="section-title">正在进行的竞赛</text>
+      <view class="competition-scroll-container">
+        <scroll-view class="competition-scroll" scroll-x enable-flex>
+          <view class="competition-card" wx:for="{{competitions}}" wx:key="id">
+            <image class="competition-image" src="{{item.image}}" mode="aspectFill"/>
+            <text class="competition-title">{{item.title}}</text>
+            <view class="competition-info">
+              <text class="participants">参与人数：{{item.participants}}</text>
+              <text class="remaining-time">剩余 {{item.remainingDays}} 天</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+
+    <!-- 功能导航区 -->
+    <view class="nav-grid">
+      <view class="nav-item" bindtap="goToExercise">
+        <view class="nav-icon">
+          <text class="iconfont icon-book"></text>
+        </view>
+        <text class="nav-text">题库练习</text>
+      </view>
+      <view class="nav-item" bindtap="goToRandomMatch">
+        <view class="nav-icon">
+          <text class="iconfont icon-random"></text>
+        </view>
+        <text class="nav-text">随机匹配</text>
+      </view>
+      <view class="nav-item" bindtap="goToFriendBattle">
+        <view class="nav-icon">
+          <text class="iconfont icon-users"></text>
+        </view>
+        <text class="nav-text">好友对战</text>
+      </view>
+      <view class="nav-item" bindtap="goToHistory">
+        <view class="nav-icon">
+          <text class="iconfont icon-history"></text>
+        </view>
+        <text class="nav-text">历史记录</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部信息 -->
+  <view class="footer">
+    <text class="footer-text">© 2024 中国移动 版权所有</text>
+    <text class="footer-text">联系电话：10086</text>
+    <text class="footer-text">ICP备案号：京ICP备12345678号</text>
+  </view>
+</view> 

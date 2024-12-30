@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/ranking/ranking",
+    "pages/profile/profile",
+    "pages/quiz/quiz",
+    "pages/admin/quiz-manage/quiz-manage",
+    "pages/admin/user-manage/user-manage"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3366FF",
+    "navigationBarTitleText": "企业知识竞赛",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#3366FF",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/ranking/ranking",
+        "text": "排行榜",
+        "iconPath": "picture/rank.png",
+        "selectedIconPath": "picture/rank.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "picture/home.png",
+        "selectedIconPath": "picture/home.png"
+      },      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "picture/person.png",
+        "selectedIconPath": "picture/person.png"
+      }
+    ]
+  }
+} 
